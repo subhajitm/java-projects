@@ -1,0 +1,21 @@
+
+public class Department {
+
+	String deptCode;
+    String name;
+    Integer hod;
+    String address;
+    String state;
+    String city;
+    Integer zip;
+    
+	public static void main(String[] args) {
+		
+		RandomStringUtils rs = new RandomStringUtils();
+
+        for(int i=0; i<5; i++)
+            System.out.println(rs.random());
+
+	}
+
+}

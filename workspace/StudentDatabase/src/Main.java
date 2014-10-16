@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
+
+public class Main {
+
+	public void createDeptData(ArrayList<Department> dept, ArrayList<String> deptCode) {
+		Iterator<String> it = deptCode.iterator();
+		while(it.hasNext())
+		{
+		 String dcode = it.next();
+		 Department newDept = new Department();
+		 
+		    
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		Main main = new Main();
+		
+		ArrayList<Department> deptArray = new ArrayList();
+		ArrayList<String> deptCode = new ArrayList<String>();
+		deptCode.add("CSCE");
+		deptCode.add("ECEN");
+		deptCode.add("CVEN");
+		deptCode.add("MECH");
+		deptCode.add("AERO");
+		deptCode.add("STAT");
+		deptCode.add("PTRLM");
+		deptCode.add("CHEM");
+				
+		RandomStringUtils rs = new RandomStringUtils();
+		System.out.println(rs.randomNumeric(3));
+		
+		int noOfCourses = 300;
+		int i = 0;
+		Random r = new Random();
+		while(i < noOfCourses) {
+			int d = r.nextInt(8);
+			Course c = new Course(deptCode.get(d));
+			String stmt = "INSERT INTO COURSE"
+		}
+		
+	}
+
+}

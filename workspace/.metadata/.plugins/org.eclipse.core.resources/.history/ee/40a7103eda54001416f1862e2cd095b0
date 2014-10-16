@@ -1,0 +1,14 @@
+
+public class Course {
+
+	Integer courseCode;
+	String deptCode;
+	String title;
+	Integer section;
+	Float credits;
+	String description;
+	
+	public Course(String dept) {
+		
+	}
+}
