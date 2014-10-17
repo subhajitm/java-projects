@@ -14,11 +14,12 @@ public class Course {
 	public Course(String dept) {
 		RandomStringUtils rs = new RandomStringUtils();
 		setDeptCode(dept);
-		setCourseCode(Integer.parseInt(rs.randomNumeric(3)));
+		Random ran = new Random();
+		int x = ran.nextInt(999-100) + 100;
+		setCourseCode(x);
 		setTitle(rs.randomAlphabetic(20));
 		setSection(Integer.parseInt(rs.randomNumeric(1)));
-		Random ran = new Random();
-		int x = ran.nextInt(4) + 1;
+		x = ran.nextInt(4) + 1;
 		setCredits((float)x);
 		setDescription(rs.randomAlphabetic(30));		
 	}

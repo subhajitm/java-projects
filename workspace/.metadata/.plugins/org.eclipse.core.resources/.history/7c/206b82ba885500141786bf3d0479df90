@@ -1,0 +1,9 @@
+
+public class CourseOffering {
+	
+	String deptCode;
+	Integer courseCode;
+	Integer section;
+	
+	
+}

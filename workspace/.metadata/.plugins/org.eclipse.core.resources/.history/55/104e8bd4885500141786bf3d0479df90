@@ -1,0 +1,17 @@
+
+public class CourseOffering {
+	
+	String deptCode;
+	Integer courseCode;
+	Integer section;
+	String semester;
+	Integer year;
+	String location;
+	Integer TA_UIN;
+	Integer prof_UIN;
+	
+	public CourseOffering() {
+		
+	}
+	
+}

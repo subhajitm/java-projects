@@ -1,0 +1,132 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.*;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
+
+public class Main {
+
+	public void createDeptData(ArrayList<Department> dept, ArrayList<String> deptCode) {
+		Iterator<String> it = deptCode.iterator();
+		while(it.hasNext())
+		{
+		 String dcode = it.next();
+		 Department newDept = new Department();
+		 
+		    
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		ArrayList<Department> deptArray = new ArrayList();
+		ArrayList<String> deptCode = new ArrayList<String>();
+		deptCode.add("CSCE");
+		deptCode.add("ECEN");
+		deptCode.add("CVEN");
+		deptCode.add("MECH");
+		deptCode.add("AERO");
+		deptCode.add("STAT");
+		deptCode.add("PTRLM");
+		deptCode.add("CHEM");
+				
+		int noOfCourses = 300;
+		int i = 0;
+		Set<String> courseList = new HashSet<String>(noOfCourses);
+		ArrayList<Course> courseObj = new ArrayList<Course>(noOfCourses);
+		ArrayList<String> courseInsert = new ArrayList<String>(noOfCourses);
+		Random r = new Random();
+		while(i < noOfCourses) {
+			int d = r.nextInt(8);
+			Course c = new Course(deptCode.get(d));
+			String stmt = "INSERT INTO "+ "Course" +" VALUES("+
+							c.getCourseCode()+","+
+							c.getDeptCode()+","+
+							c.getTitle()+","+
+							c.getSection()+","+
+							c.getCredits()+","+
+							c.getDescription()+");";
+			String newCourse = c.getDeptCode()+" "+c.courseCode+" "+c.getSection();
+			if (courseList.contains(newCourse)) {
+				// System.out.println("PRESENT");
+				continue;
+			}
+			courseInsert.add(stmt);
+			courseList.add(newCourse);
+			courseObj.add(c);
+			i++;			
+		}
+		courseInsert.add("COMMIT;");
+		for (i=0; i<=noOfCourses; i++)
+			System.out.println(courseInsert.get(i));
+		
+		// Course Offering
+		i = 0;
+		int noOfOffering = 400;
+		Set<String> courseOfferingList = new HashSet<String>(noOfOffering);
+		ArrayList<CourseOffering> courseOfferingObj = new ArrayList<CourseOffering>(noOfOffering);
+		ArrayList<String> courseOfferingInsert = new ArrayList<String>(noOfOffering);
+		while(i < noOfOffering) {
+			int d = r.nextInt(noOfCourses);
+			Course c = courseObj.get(d);
+			CourseOffering cof = new CourseOffering(c);
+			String stmt = "INSERT INTO "+ "Course_Offerings" +" VALUES("+
+							cof.getDeptCode()+","+
+							cof.getCourseCode()+","+
+							cof.getSection()+","+
+							cof.getSemester()+","+
+							cof.getYear()+","+
+							cof.getLocation()+","+
+							cof.getTA_UIN()+","+
+							cof.getProf_UIN()+");";
+			String newCof = cof.getDeptCode()+cof.courseCode+cof.getSection()+
+								cof.getSemester()+cof.getYear();
+			if (courseList.contains(newCof)) {
+				// System.out.println("PRESENT");
+				continue;
+			}
+			courseOfferingInsert.add(stmt);
+			courseOfferingList.add(newCof);
+			courseOfferingObj.add(cof);
+			i++;			
+		}
+		courseOfferingInsert.add("COMMIT;");
+		for (i=0; i<=noOfOffering; i++)
+			System.out.println(courseOfferingInsert.get(i));
+		
+		// Enrollments
+		i = 0;
+		int noOfEnrollement = 10000;
+		Set<String> courseEnrollmentList = new HashSet<String>(noOfEnrollement);
+		ArrayList<String> courseEnrollmentInsert = new ArrayList<String>(noOfEnrollement);
+		while(i < noOfEnrollement) {
+			int d = r.nextInt(noOfOffering);
+			CourseOffering cof = courseOfferingObj.get(d);
+			Enrollments e = new Enrollments(cof);
+			String stmt = "INSERT INTO "+ "Enrollments" +" VALUES("+
+							e.getStudUIN()+","+
+							e.getDeptCode()+","+
+							e.getCourseCode()+","+
+							e.getSection()+","+
+							e.getSemester()+","+
+							e.getYear()+","+
+							e.getGrade()+");";
+							
+			String newEnroll = e.getDeptCode()+e.courseCode+e.getSection()+
+								e.getSemester()+e.getYear();
+			if (courseList.contains(newEnroll)) {
+				// System.out.println("PRESENT");
+				continue;
+			}
+			courseEnrollmentInsert.add(stmt);
+			courseEnrollmentList.add(newEnroll);
+			i++;			
+		}
+		courseEnrollmentInsert.add("COMMIT;");
+		for (i=0; i<=noOfEnrollement; i++)
+			System.out.println(courseEnrollmentInsert.get(i));
+	}
+
+}

@@ -1,0 +1,14 @@
+
+public class Enrollments {
+	Integer studUIN;
+	String deptCode;
+	String courseCode;
+	Integer section;
+	Integer semester;
+	Integer year;
+	char grade;
+	
+	public Enrollments() {
+		
+	}
+}
