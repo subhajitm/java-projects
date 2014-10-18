@@ -12,7 +12,7 @@ public class Enrollments {
 	
 	char gradeP[] = {'A','B','C','D','F'};
 	
-	public Enrollments(CourseOffering cof) {
+	public Enrollments(CourseOffering cof, int studUIN) {
 		this.setCourseCode(cof.getCourseCode());
 		this.setDeptCode(cof.getDeptCode());
 		this.setSection(cof.getSection());
@@ -21,6 +21,7 @@ public class Enrollments {
 		Random r = new Random();
 		int x = r.nextInt(5);
 		this.setGrade(gradeP[x]);
+		this.setStudUIN(studUIN);
 		
 	}
 

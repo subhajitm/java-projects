@@ -10,18 +10,32 @@ public class Course {
 	Integer section;
 	float credits;
 	String description;
+	char level;
 	
+	char levelP[] = {'U','G'};
+	
+	public char getLevel() {
+		return level;
+	}
+
+	public void setLevel(char level) {
+		this.level = level;
+	}
+
 	public Course(String dept) {
 		RandomStringUtils rs = new RandomStringUtils();
 		setDeptCode(dept);
 		Random ran = new Random();
 		int x = ran.nextInt(999-100) + 100;
 		setCourseCode(x);
-		setTitle(rs.randomAlphabetic(20));
-		setSection(Integer.parseInt(rs.randomNumeric(1)));
-		x = ran.nextInt(4) + 1;
+		setTitle(rs.randomAlphabetic(20)); // random string generator
+		x = ran.nextInt(5) + 1;
+		setSection(x);
+		x = ran.nextInt(4) + 1; // random int credits within 1 to 4
 		setCredits((float)x);
-		setDescription(rs.randomAlphabetic(30));		
+		setDescription(rs.randomAlphabetic(30));
+		x = ran.nextInt(2);
+		this.setLevel(levelP[x]);
 	}
 
 	public Integer getCourseCode() {

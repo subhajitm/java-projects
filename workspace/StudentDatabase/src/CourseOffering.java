@@ -16,7 +16,7 @@ public class CourseOffering {
 	
 	String sem[] = {"Summer", "Fall", "Spring"};
 	
-	public CourseOffering(Course c) {
+	public CourseOffering(Course c, int studUIN, int profUIN) {
 		this.setDeptCode(c.getDeptCode());
 		this.setCourseCode(c.getCourseCode());
 		this.setSection(c.getSection());
@@ -27,6 +27,8 @@ public class CourseOffering {
 		this.setYear(x);
 		RandomStringUtils rs = new RandomStringUtils();
 		this.setLocation(rs.randomAlphanumeric(20));
+		this.setTA_UIN(studUIN);
+		this.setProf_UIN(profUIN);
 		
 	}
 
